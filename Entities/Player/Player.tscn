@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://e3heud6lwka4"]
+
+[ext_resource type="Script" uid="uid://2c3xpyx36t2j" path="res://Entities/Player/Player.cs" id="1_e5kic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u36tg"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_u36tg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5kic"]
+gradient = SubResource("Gradient_u36tg")
+width = 32
+height = 32
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=575946156]
+script = ExtResource("1_e5kic")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=211062354]
+shape = SubResource("RectangleShape2D_u36tg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1154225278]
+texture = SubResource("GradientTexture2D_e5kic")
