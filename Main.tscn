@@ -17,6 +17,6 @@ color = Color(0.058481887, 0.3290106, 0.2573933, 1)
 position = Vector2(321, 192)
 
 [node name="Flashlight" parent="Player" unique_id=1898793408 instance=ExtResource("2_uu6xs")]
-position = Vector2(150, 0)
+position = Vector2(172, 0)
 rotation = 0.7853982
-scale = Vector2(3, 3)
+scale = Vector2(3.5, 3.5)
