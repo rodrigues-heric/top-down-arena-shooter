@@ -56,7 +56,7 @@ public partial class Player : CharacterBody2D
     {
         if (@event.IsActionPressed("toggle_flashlight"))
         {
-            _flashLight.ToggleLight();
+            _flashLight?.ToggleLight();
         }
     }
 
