@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+mouse_cursor/custom_image="uid://d15iyssv1e4sw"
 
 [dotnet]
 
