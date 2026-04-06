@@ -2,6 +2,7 @@ namespace TopDownArenaShooter.Entities.Player;
 
 using System;
 using Godot;
+using TopDownArenaShooter.Prefabs.FVX.Flashlight;
 
 public partial class Player : CharacterBody2D
 {
@@ -19,8 +20,13 @@ public partial class Player : CharacterBody2D
 
     private const float Speed = 200.0f;
 
+    private Flashlight _flashLight;
+
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready() { }
+    public override void _Ready()
+    {
+        _flashLight = GetNode<Flashlight>("Flashlight");
+    }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
@@ -33,11 +39,25 @@ public partial class Player : CharacterBody2D
 
     public override void _Input(InputEvent @event)
     {
+        HandleInputType(@event);
+        HandleToggleFlashlight(@event);
+    }
+
+    private void HandleInputType(InputEvent @event)
+    {
         if (IsUsingJoypad(@event))
             _isUsingGamepad = true;
         else if (IsUsingKeyboard(@event))
             if (IsMouseMoving(@event))
                 _isUsingGamepad = false;
+    }
+
+    private void HandleToggleFlashlight(InputEvent @event)
+    {
+        if (@event.IsActionPressed("toggle_flashlight"))
+        {
+            _flashLight.ToggleLight();
+        }
     }
 
     private static bool IsUsingKeyboard(InputEvent @event)

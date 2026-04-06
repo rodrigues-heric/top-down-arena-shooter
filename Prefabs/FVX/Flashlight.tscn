@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dokcqyj6y7q1v"]
 
+[ext_resource type="Script" uid="uid://kd433d2dmj8y" path="res://Prefabs/FVX/Flashlight.cs" id="1_34wrb"]
+
 [sub_resource type="Gradient" id="Gradient_k8yw7"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -10,6 +12,7 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(0.7, 0.4)
 
 [node name="Flashlight" type="Node2D" unique_id=1898793408]
+script = ExtResource("1_34wrb")
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=932100067]
