@@ -48,6 +48,8 @@ public partial class Flashlight : Node2D
         }
     }
 
+    public float GetBatteryPercent() => _currentBattery;
+
     private void HandleBattery(float delta)
     {
         if (_isOn && _currentBattery > 0)
