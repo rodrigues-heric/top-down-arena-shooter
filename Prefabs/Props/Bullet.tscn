@@ -6,6 +6,8 @@
 size = Vector2(6, 2)
 
 [node name="Bullet" type="Area2D" unique_id=893279313]
+collision_layer = 0
+collision_mask = 5
 script = ExtResource("1_eqxst")
 metadata/_edit_group_ = true
 
