@@ -2,10 +2,12 @@ namespace TopDownArenaShooter.Prefabs.Props.Bullet;
 
 using System;
 using Godot;
+using TopDownArenaShooter.Shared.Scripts.Interfaces;
 
 public partial class Bullet : Area2D
 {
     private const float Speed = 800.0f;
+    private const float Damage = 20.0f;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -31,9 +33,11 @@ public partial class Bullet : Area2D
 
     private void OnBodyEntered(Node body)
     {
-        if (body.IsInGroup("Enemies"))
+        if (body is IDamageable damageableTarget)
         {
+            damageableTarget.TakeDamage(Damage);
             DestroySelf();
+            return;
         }
 
         if (body is StaticBody2D)

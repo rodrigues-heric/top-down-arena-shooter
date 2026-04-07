@@ -13,6 +13,12 @@ gradient = SubResource("Gradient_4b1i2")
 width = 32
 height = 32
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wn1m"]
+bg_color = Color(0.6, 0.6, 0.6, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4b1i2"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="Zombie" type="CharacterBody2D" unique_id=1349193879]
 script = ExtResource("1_4b1i2")
 metadata/_edit_group_ = true
@@ -20,5 +26,15 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878393759]
 shape = SubResource("RectangleShape2D_jm3om")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1333777482]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1333777482]
 texture = SubResource("GradientTexture2D_4wn1m")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=20530971]
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -18.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4wn1m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4b1i2")
+value = 100.0
+show_percentage = false
