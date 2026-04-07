@@ -9,6 +9,8 @@ public partial class Flashlight : Node2D
     private const float ConsumptionRate = 5.0f;
     private const float RechargeRate = 2.0f;
     private const float LowBatteryLimit = 20.0f;
+    private const float LowBatteryEnergy = 1.5f;
+    private const float HightBatteryEnergy = 2.5f;
 
     private PointLight2D _light;
     private Timer _flickerTimer;
@@ -89,6 +91,7 @@ public partial class Flashlight : Node2D
         if (_flickerTimer.IsStopped())
         {
             _flickerTimer.Start(0.15f);
+            _light.Energy = LowBatteryEnergy;
         }
     }
 
@@ -96,6 +99,7 @@ public partial class Flashlight : Node2D
     {
         _flickerTimer.Stop();
         _light.Enabled = true;
+        _light.Energy = HightBatteryEnergy;
     }
 
     private void OnFlickerTimeout()
