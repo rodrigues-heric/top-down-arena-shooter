@@ -33,6 +33,7 @@ position = Vector2(453, 80)
 
 [node name="Player" parent="." unique_id=575946156 groups=["Player"] instance=ExtResource("1_glv2v")]
 position = Vector2(321, 192)
+collision_layer = 3
 
 [node name="Flashlight" parent="Player" unique_id=1898793408 instance=ExtResource("2_uu6xs")]
 position = Vector2(172, 0)
@@ -43,15 +44,15 @@ scale = Vector2(3.5, 3.5)
 position = Vector2(16, -2)
 BulletScene = ExtResource("6_lgr22")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1317734316]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1317734316 groups=["UI"]]
 script = ExtResource("5_fos0i")
 
 [node name="BatteryBar" type="ProgressBar" parent="CanvasLayer" unique_id=774223306]
 layout_direction = 2
 offset_left = 7.0
-offset_top = 7.0
+offset_top = 37.0
 offset_right = 207.0
-offset_bottom = 34.0
+offset_bottom = 64.0
 
 [node name="AmmoLabel" type="Label" parent="CanvasLayer" unique_id=1518016826]
 anchors_preset = 1
@@ -64,3 +65,10 @@ offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
 text = "Ammo: 7 / 7"
+
+[node name="PlayerHealth" type="ProgressBar" parent="CanvasLayer" unique_id=1737084554]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 207.0
+offset_bottom = 34.0
+value = 100.0

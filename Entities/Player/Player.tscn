@@ -13,6 +13,7 @@ width = 32
 height = 32
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=575946156]
+collision_layer = 3
 script = ExtResource("1_e5kic")
 metadata/_edit_group_ = true
 

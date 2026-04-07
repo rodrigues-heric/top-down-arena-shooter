@@ -4,9 +4,12 @@ using System;
 using Godot;
 using TopDownArenaShooter.Prefabs.FVX.Flashlight;
 using TopDownArenaShooter.Prefabs.Weapons.Handgun;
+using TopDownArenaShooter.Shared.Scripts.Interfaces;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, IDamageable
 {
+    private const float MaxHealth = 100.0f;
+    private float _currentHealth;
     private const String MoveLeft = "move_left";
     private const String MoveRight = "move_right";
     private const String MoveUp = "move_up";
@@ -24,11 +27,15 @@ public partial class Player : CharacterBody2D
     private Flashlight _flashLight;
     private Handgun _handgun;
 
+    public float GetCurrentHealth() => _currentHealth;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _flashLight = GetNode<Flashlight>("Flashlight");
         _handgun = GetNode<Handgun>("Handgun");
+        _currentHealth = MaxHealth;
+        AddToGroup("Player");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +55,19 @@ public partial class Player : CharacterBody2D
     {
         HandleInputType(@event);
         HandleToggleFlashlight(@event);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth - amount, 0, MaxHealth);
+
+        if (_currentHealth <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        GD.Print("Im dead");
     }
 
     private void HandleShoot()
