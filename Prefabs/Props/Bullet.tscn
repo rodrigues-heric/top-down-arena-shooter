@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://87bpiyqrc5y"]
+
+[ext_resource type="Script" uid="uid://5n1mmg28n66v" path="res://Prefabs/Props/Bullet.cs" id="1_eqxst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2hfj"]
+size = Vector2(6, 2)
+
+[node name="Bullet" type="Area2D" unique_id=893279313]
+script = ExtResource("1_eqxst")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=202082759]
+offset_left = -3.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = 1.0
+color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=32283346]
+shape = SubResource("RectangleShape2D_r2hfj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2107784700]
+rect = Rect2(-3, -1, 6, 2)

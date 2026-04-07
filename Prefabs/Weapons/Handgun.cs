@@ -2,9 +2,13 @@ namespace TopDownArenaShooter.Prefabs.Weapons.Handgun;
 
 using System;
 using Godot;
+using TopDownArenaShooter.Prefabs.Props.Bullet;
 
 public partial class Handgun : Node2D
 {
+    [Export]
+    public PackedScene BulletScene;
+
     private const float FireRate = 0.25f;
     private const float ReloadTime = 1.5f;
     private const float MuzzleDuration = 0.15f;
@@ -49,6 +53,7 @@ public partial class Handgun : Node2D
     {
         if (IsAbleToShoot())
         {
+            SpawnBullet();
             _currentAmmo -= 1;
             _fireRateTimer.Start(FireRate);
             _muzzleTimer.Start(MuzzleDuration);
@@ -61,6 +66,17 @@ public partial class Handgun : Node2D
         {
             _isReloading = true;
             _reloadTimer.Start(ReloadTime);
+        }
+    }
+
+    private void SpawnBullet()
+    {
+        if (BulletScene != null)
+        {
+            Bullet bulletInstance = BulletScene.Instantiate<Bullet>();
+            bulletInstance.GlobalPosition = _muzzle.GlobalPosition;
+            bulletInstance.GlobalRotation = GlobalRotation;
+            GetTree().Root.AddChild(bulletInstance);
         }
     }
 

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dokcqyj6y7q1v" path="res://Prefabs/FVX/Flashlight.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://bw0hlm82gg0l1" path="res://Prefabs/Weapons/Handgun.tscn" id="5_3dxm6"]
 [ext_resource type="Script" uid="uid://dwdrsplnni5k7" path="res://GameUI.cs" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://87bpiyqrc5y" path="res://Prefabs/Props/Bullet.tscn" id="6_lgr22"]
 
 [node name="Main" type="Node" unique_id=1218361238]
 script = ExtResource("1_cm0pq")
@@ -18,16 +19,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.058481887, 0.3290106, 0.2573933, 1)
 
-[node name="Zombie" parent="." unique_id=1349193879 instance=ExtResource("1_r0du0")]
+[node name="Zombie" parent="." unique_id=1349193879 groups=["Enemies"] instance=ExtResource("1_r0du0")]
 position = Vector2(124, 61)
 
-[node name="Zombie2" parent="." unique_id=2071708122 instance=ExtResource("1_r0du0")]
+[node name="Zombie2" parent="." unique_id=2071708122 groups=["Enemies"] instance=ExtResource("1_r0du0")]
 position = Vector2(66, 297)
 
-[node name="Zombie3" parent="." unique_id=744576780 instance=ExtResource("1_r0du0")]
+[node name="Zombie3" parent="." unique_id=744576780 groups=["Enemies"] instance=ExtResource("1_r0du0")]
 position = Vector2(378, 276)
 
-[node name="Zombie4" parent="." unique_id=569359834 instance=ExtResource("1_r0du0")]
+[node name="Zombie4" parent="." unique_id=569359834 groups=["Enemies"] instance=ExtResource("1_r0du0")]
 position = Vector2(453, 80)
 
 [node name="Player" parent="." unique_id=575946156 groups=["Player"] instance=ExtResource("1_glv2v")]
@@ -40,6 +41,7 @@ scale = Vector2(3.5, 3.5)
 
 [node name="Handgun" parent="Player" unique_id=271767039 instance=ExtResource("5_3dxm6")]
 position = Vector2(16, -2)
+BulletScene = ExtResource("6_lgr22")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1317734316]
 script = ExtResource("5_fos0i")
