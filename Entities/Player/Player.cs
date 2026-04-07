@@ -9,7 +9,10 @@ using TopDownArenaShooter.Shared.Scripts.Interfaces;
 public partial class Player : CharacterBody2D, IDamageable
 {
     private const float MaxHealth = 100.0f;
+    private const float HealRate = 0.01f;
+    private const float HealCooldown = 5.0f;
     private float _currentHealth;
+
     private const String MoveLeft = "move_left";
     private const String MoveRight = "move_right";
     private const String MoveUp = "move_up";
@@ -26,6 +29,7 @@ public partial class Player : CharacterBody2D, IDamageable
 
     private Flashlight _flashLight;
     private Handgun _handgun;
+    private Timer _healCooldown;
 
     public float GetCurrentHealth() => _currentHealth;
 
@@ -34,6 +38,7 @@ public partial class Player : CharacterBody2D, IDamageable
     {
         _flashLight = GetNode<Flashlight>("Flashlight");
         _handgun = GetNode<Handgun>("Handgun");
+        _healCooldown = GetNode<Timer>("HealCooldown");
         _currentHealth = MaxHealth;
         AddToGroup("Player");
     }
@@ -43,6 +48,7 @@ public partial class Player : CharacterBody2D, IDamageable
     {
         HandleShoot();
         HandleReload();
+        HandleHeal();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -60,9 +66,19 @@ public partial class Player : CharacterBody2D, IDamageable
     public void TakeDamage(float amount)
     {
         _currentHealth = Mathf.Clamp(_currentHealth - amount, 0, MaxHealth);
+        _healCooldown.Stop();
+        _healCooldown.Start(HealCooldown);
 
         if (_currentHealth <= 0)
             Die();
+    }
+
+    private void HandleHeal()
+    {
+        if (_healCooldown.IsStopped())
+        {
+            _currentHealth = Mathf.Clamp(_currentHealth + HealRate, 0, MaxHealth);
+        }
     }
 
     private void Die()

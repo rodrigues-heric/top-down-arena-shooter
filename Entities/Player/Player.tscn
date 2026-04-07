@@ -22,3 +22,6 @@ shape = SubResource("RectangleShape2D_u36tg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1154225278]
 texture = SubResource("GradientTexture2D_e5kic")
+
+[node name="HealCooldown" type="Timer" parent="." unique_id=267580821]
+one_shot = true
