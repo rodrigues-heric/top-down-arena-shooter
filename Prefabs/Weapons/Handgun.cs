@@ -22,6 +22,8 @@ public partial class Handgun : Node2D
 
     public bool IsReloading() => _isReloading;
 
+    public int GetMaxAmmo() => MaxAmmo;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
