@@ -19,3 +19,5 @@ metadata/_edit_group_ = true
 energy = 2.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_34wrb")
+
+[node name="FlickerTimer" type="Timer" parent="." unique_id=1670899656]

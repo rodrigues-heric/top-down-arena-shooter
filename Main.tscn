@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://cwfv4ce83ihqk"]
 
+[ext_resource type="Script" uid="uid://nks0lscs8gps" path="res://Main.cs" id="1_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://e3heud6lwka4" path="res://Entities/Player/Player.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://cov17i4xhdile" path="res://Entities/Zombie/Zombie.tscn" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://dokcqyj6y7q1v" path="res://Prefabs/FVX/Flashlight.tscn" id="2_uu6xs"]
 
 [node name="Main" type="Node" unique_id=1218361238]
+script = ExtResource("1_cm0pq")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1734235607]
 anchors_preset = 15
