@@ -5,38 +5,45 @@ using Godot;
 
 public partial class Flashlight : Node2D
 {
-    private float MaxBattery = 100.0f;
-    private float ConsumptionRate = 5.0f;
-    private float RechargeRate = 2.0f;
+    private const float MaxBattery = 100.0f;
+    private const float ConsumptionRate = 5.0f;
+    private const float RechargeRate = 2.0f;
+    private const float LowBatteryLimit = 20.0f;
 
     private PointLight2D _light;
     private Timer _flickerTimer;
     private float _currentBattery;
     private bool _isOn = false;
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _light = GetNode<PointLight2D>("PointLight2D");
+        _light.Enabled = false;
+
         _flickerTimer = GetNode<Timer>("FlickerTimer");
         _flickerTimer.Timeout += OnFlickerTimeout;
+
         _currentBattery = MaxBattery;
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
         HandleBattery((float)delta);
         UpdateVisuals();
-
-        GD.Print("Battery: ", _currentBattery);
-        GD.Print("Timer Stopped: ", _flickerTimer.IsStopped());
-        GD.Print("Light On: ", _isOn);
     }
 
     public void ToggleLight()
     {
+        if (!_isOn && _currentBattery <= 0)
+            return;
+
         _isOn = !_isOn;
+
+        if (!_isOn)
+        {
+            _flickerTimer.Stop();
+            _light.Enabled = false;
+        }
     }
 
     private void HandleBattery(float delta)
@@ -44,6 +51,12 @@ public partial class Flashlight : Node2D
         if (_isOn && _currentBattery > 0)
         {
             _currentBattery -= ConsumptionRate * delta;
+
+            if (_currentBattery <= 0)
+            {
+                _isOn = false;
+                _flickerTimer.Stop();
+            }
         }
         else
         {
@@ -52,39 +65,44 @@ public partial class Flashlight : Node2D
         _currentBattery = Mathf.Clamp(_currentBattery, 0, MaxBattery);
     }
 
-    private void OnFlickerTimeout()
-    {
-        _light.Enabled = !_light.Enabled;
-    }
-
     private void UpdateVisuals()
     {
-        if (_currentBattery <= 0)
-            HandleEmptyBattery();
-        else if (_currentBattery < 15.0f)
-            HandleLowBattery();
-        else
-            HandleHighBattery();
-    }
+        if (!_isOn)
+        {
+            _flickerTimer.Stop();
+            _light.Enabled = false;
+            return;
+        }
 
-    private void HandleEmptyBattery()
-    {
-        _flickerTimer.Stop();
-        _isOn = false;
+        if (_currentBattery < LowBatteryLimit)
+        {
+            HandleLowBattery();
+        }
+        else
+        {
+            HandleHighBattery();
+        }
     }
 
     private void HandleLowBattery()
     {
         if (_flickerTimer.IsStopped())
         {
-            _flickerTimer.Start(0.5f);
+            _flickerTimer.Start(0.15f);
         }
     }
 
     private void HandleHighBattery()
     {
         _flickerTimer.Stop();
-        _light.Visible = _isOn;
-        _light.Enabled = _isOn;
+        _light.Enabled = true;
+    }
+
+    private void OnFlickerTimeout()
+    {
+        if (_isOn && _currentBattery < LowBatteryLimit)
+        {
+            _light.Enabled = !_light.Enabled;
+        }
     }
 }
