@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://e3heud6lwka4" path="res://Entities/Player/Player.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://cov17i4xhdile" path="res://Entities/Zombie/Zombie.tscn" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://dokcqyj6y7q1v" path="res://Prefabs/FVX/Flashlight.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://bw0hlm82gg0l1" path="res://Prefabs/Weapons/Handgun.tscn" id="5_3dxm6"]
 [ext_resource type="Script" uid="uid://dwdrsplnni5k7" path="res://GameUI.cs" id="5_fos0i"]
 
 [node name="Main" type="Node" unique_id=1218361238]
@@ -36,6 +37,9 @@ position = Vector2(321, 192)
 position = Vector2(172, 0)
 rotation = 0.7853982
 scale = Vector2(3.5, 3.5)
+
+[node name="Handgun" parent="Player" unique_id=271767039 instance=ExtResource("5_3dxm6")]
+position = Vector2(16, -2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1317734316]
 script = ExtResource("5_fos0i")

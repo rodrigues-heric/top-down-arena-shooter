@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bw0hlm82gg0l1"]
+
+[ext_resource type="Script" uid="uid://c7ucosgcy8jsq" path="res://Prefabs/Weapons/Handgun.cs" id="1_yedm5"]
+
+[node name="Handgun" type="Node2D" unique_id=271767039]
+script = ExtResource("1_yedm5")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=886895737]
+offset_right = 10.0
+offset_bottom = 4.0
+color = Color(1, 0.63642746, 0, 1)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=567996797]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=161462287]
+one_shot = true
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=996179315]
+
+[node name="ColorRect" type="ColorRect" parent="Muzzle" unique_id=213227906]
+offset_left = 10.0
+offset_top = -1.0
+offset_right = 16.0
+offset_bottom = 5.0
+color = Color(1, 0.96139604, 0.24351591, 1)
+
+[node name="MuzzleTimer" type="Timer" parent="." unique_id=1624660920]
+one_shot = true

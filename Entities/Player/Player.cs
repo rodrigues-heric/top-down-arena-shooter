@@ -3,6 +3,7 @@ namespace TopDownArenaShooter.Entities.Player;
 using System;
 using Godot;
 using TopDownArenaShooter.Prefabs.FVX.Flashlight;
+using TopDownArenaShooter.Prefabs.Weapons.Handgun;
 
 public partial class Player : CharacterBody2D
 {
@@ -21,15 +22,21 @@ public partial class Player : CharacterBody2D
     private const float Speed = 200.0f;
 
     private Flashlight _flashLight;
+    private Handgun _handgun;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _flashLight = GetNode<Flashlight>("Flashlight");
+        _handgun = GetNode<Handgun>("Handgun");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
+    public override void _Process(double delta)
+    {
+        HandleShoot();
+        HandleReload();
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -41,6 +48,22 @@ public partial class Player : CharacterBody2D
     {
         HandleInputType(@event);
         HandleToggleFlashlight(@event);
+    }
+
+    private void HandleShoot()
+    {
+        if (Input.IsActionPressed("shoot"))
+        {
+            _handgun.Shoot();
+        }
+    }
+
+    private void HandleReload()
+    {
+        if (Input.IsActionPressed("reload"))
+        {
+            _handgun.StartReload();
+        }
     }
 
     private void HandleInputType(InputEvent @event)
