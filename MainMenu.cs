@@ -16,9 +16,12 @@ public partial class MainMenu : Control
         {
             _startButton = container.GetNode<Button>("StartButton");
             _startButton.Pressed += OnStartButtonPressed;
+            _startButton.CallDeferred(MethodName.GrabFocus);
+            _startButton.MouseEntered += () => _startButton.GrabFocus();
 
             _quitButton = container.GetNode<Button>("QuitButton");
             _quitButton.Pressed += OnQuitButtonPressed;
+            _quitButton.MouseEntered += () => _quitButton.GrabFocus();
         }
     }
 

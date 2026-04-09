@@ -48,6 +48,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../QuitButton")
 text = "START"
 
 [node name="SpacerButtons" type="Control" parent="VBoxContainer" unique_id=1293973436]
@@ -58,4 +59,5 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../StartButton")
 text = "QUIT"
