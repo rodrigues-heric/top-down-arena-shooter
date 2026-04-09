@@ -40,10 +40,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Top Down Arena Shooter Survival Horror 2D"
 
-[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=493146140]
+[node name="SpacerTitle" type="Control" parent="VBoxContainer" unique_id=1205699846]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=493146140]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "START"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1759502111]
+[node name="SpacerButtons" type="Control" parent="VBoxContainer" unique_id=1293973436]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1759502111]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "QUIT"
