@@ -90,6 +90,9 @@ public partial class Flashlight : Node2D
 
     private void HandleLowBattery()
     {
+        if (!IsInsideTree())
+            return;
+
         if (_flickerTimer.IsStopped())
         {
             _flickerTimer.Start(0.15f);
