@@ -33,7 +33,6 @@ position = Vector2(453, 80)
 
 [node name="Player" parent="." unique_id=575946156 groups=["Player"] instance=ExtResource("1_glv2v")]
 position = Vector2(321, 192)
-collision_layer = 3
 
 [node name="Flashlight" parent="Player" unique_id=1898793408 instance=ExtResource("2_uu6xs")]
 position = Vector2(172, 0)

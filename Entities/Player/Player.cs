@@ -4,6 +4,7 @@ using System;
 using Godot;
 using TopDownArenaShooter.Prefabs.FVX.Flashlight;
 using TopDownArenaShooter.Prefabs.Weapons.Handgun;
+using TopDownArenaShooter.Shared.ScenePaths;
 using TopDownArenaShooter.Shared.Scripts.Interfaces;
 
 public partial class Player : CharacterBody2D, IDamageable
@@ -83,7 +84,7 @@ public partial class Player : CharacterBody2D, IDamageable
 
     private void Die()
     {
-        GD.Print("Im dead");
+        GetTree().ChangeSceneToFile(ScenePaths.MainMenuPath());
     }
 
     private void HandleShoot()

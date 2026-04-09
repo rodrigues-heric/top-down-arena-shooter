@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dagrb67hg7muk"]
+
+[ext_resource type="Script" uid="uid://byug3ls0b6303" path="res://MainMenu.cs" id="1_i26rj"]
+
+[node name="MainMenu" type="Control" unique_id=35689006]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i26rj")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1234672588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11856222, 0.11856222, 0.11856222, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=8501966]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=564767439]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Top Down Arena Shooter Survival Horror 2D"
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=493146140]
+layout_mode = 2
+text = "START"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1759502111]
+layout_mode = 2
+text = "QUIT"
