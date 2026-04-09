@@ -66,9 +66,6 @@ public partial class Player : CharacterBody2D, IDamageable
 
     public void TakeDamage(float amount)
     {
-        if (!IsInsideTree())
-            return;
-
         _currentHealth = Mathf.Clamp(_currentHealth - amount, 0, MaxHealth);
         _healCooldown.Stop();
         _healCooldown.Start(HealCooldown);

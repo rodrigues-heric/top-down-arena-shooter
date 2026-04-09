@@ -72,9 +72,6 @@ public partial class Zombie : CharacterBody2D, IDamageable
 
     private void Attack(IDamageable target)
     {
-        if (!IsInsideTree())
-            return;
-
         target.TakeDamage(AttackPower);
         _attackTimer.Start();
     }

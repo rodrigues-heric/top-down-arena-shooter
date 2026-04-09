@@ -51,9 +51,6 @@ public partial class Handgun : Node2D
 
     public void Shoot()
     {
-        if (!IsInsideTree())
-            return;
-
         if (IsAbleToShoot())
         {
             SpawnBullet();
@@ -65,9 +62,6 @@ public partial class Handgun : Node2D
 
     public void StartReload()
     {
-        if (!IsInsideTree())
-            return;
-
         if (IsAbleToReload())
         {
             _isReloading = true;
